@@ -30,6 +30,9 @@ salary INT NOT NULL,
 location varchar(20) NOT NULL DEFAULT 'BANGLORE'
 );
 
+
+We can do multiple inserts as well - 
+
 INSERT INTO employee(id,firstname, lastname, age, salary) VALUES (1,'rajesh','kumar',29,10000),(2,'satish','kumar',28,30000);
 
 Creating table with Primary Key:
