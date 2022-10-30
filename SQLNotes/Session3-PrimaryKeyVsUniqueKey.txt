@@ -133,20 +133,23 @@ Unique Key:
 
 You can have only one primary key and primary key can not hold any null value.
 
-We shopuld use primary key when we have to identify each record.
-
+We should use primary key when we have to uniquely identify each record.
 
 Unique key can hold NULL values
 
 In MYSQL Unique key can hold any number of NULL values, 
 
-in some of other famous DB's only it allow only NULL.
+in some of other famous DB's it allow only one NULL.
 
 The purpose of unique key is to make sure the values do not duplicate.
 
-You can have only one primary key but multiple unique keys in table.
+We can have unique keys on more than one columns.
 
+You can have only one primary key (or combination i.e. composite key) but multiple unique keys in table.
 
+=======================================
+
+Example of multiple primary keys - 
 
 CREATE TABLE employee (
 firstname varchar(20) NOT NULL,
@@ -168,7 +171,19 @@ lastname varchar(20) ,
 age INT
 );
 
+- It will not allow duplicate id but it will allow Null for the id column
 
+==========================================
+
+Example of Multiple Unique Keys - 
+
+CREATE TABLE employee (
+id INT,
+firstname varchar(20) ,
+lastname varchar(20) ,
+age INT,
+UNIQUE KEY(id, firstname)
+);
 
 
 
