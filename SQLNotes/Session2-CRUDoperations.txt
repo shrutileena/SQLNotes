@@ -51,6 +51,8 @@ INSERT INTO employee(firstname,  lastname, age, salary, location) VALUES ('Rajes
 
 INSERT INTO employee(firstname,  lastname, age, salary, location) VALUES ("Ritesh's",'sharma',28,10000,'bangalore');
 
+
+Escape character (\) can be used while inserting data for special characters - 
 INSERT INTO employee(firstname,  lastname, age, salary, location) VALUES ('Ritesh\'s','sharma',28,10000,'bangalore');
 
 
@@ -111,7 +113,9 @@ INSERT INTO employee(firstname, lastname, age, salary, location) VALUES ('rajesh
 
 
 
-Combination of NOT NOT and DEFAULT
+Combination of NOT NULL and DEFAULT
+
+We can combine NOT NULL with DEFAULT as well.
 
 =========================================
 CREATE TABLE employee (
