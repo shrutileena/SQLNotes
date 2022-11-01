@@ -14,7 +14,7 @@ Primary key vs unique key
 
 INSERT INTO employee(firstname, lastname, age, salary) VALUES ('rajesh','kumar',29,10000);
 
-
+********
 Primary Key 
 ==============================
 It helps us to uniquely identify in the table.
@@ -30,11 +30,12 @@ salary INT NOT NULL,
 location varchar(20) NOT NULL DEFAULT 'BANGLORE'
 );
 
-
+********
 We can do multiple inserts as well - 
 
 INSERT INTO employee(id,firstname, lastname, age, salary) VALUES (1,'rajesh','kumar',29,10000),(2,'satish','kumar',28,30000);
 
+********
 Creating table with Primary Key:
 ===================================
 
@@ -61,6 +62,7 @@ INSERT INTO employee(id,firstname, lastname, age, salary) VALUES (1,'rejina','ku
 INSERT INTO employee(id,firstname, lastname, age, salary) VALUES (1,'rejina','kumar',29,10000);
 ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
 
+********
 other way to define the primary key:
 
 =====================================
@@ -77,6 +79,7 @@ PRIMARY KEY(id)
 
 
 
+********
 Composite Primary Key:
 
 CREATE TABLE employee (
@@ -91,6 +94,10 @@ PRIMARY KEY(id,firstname)
 );
 
 
+
+
+
+********
 creating Table with Autoincrement:
 
 ======================================
@@ -108,6 +115,9 @@ PRIMARY KEY(id)
 );
 
 
+********
+Imp point- Whenever we make a column auto_increment, make sure it is a primary key
+********
 
 
 INSERT INTO employee(firstname, lastname, age, salary) VALUES ('rejina','kumar',29,10000),('satish','ku
@@ -124,7 +134,7 @@ mysql> select * from employee;
 |  3 | brijexh   | NULL       | kumar    |  29 |  10000 | BANGLORE |
 +----+-----------+------------+----------+-----+--------+----------+
 
-
+********
 Unique Key:
 
 ===========================================
@@ -147,8 +157,11 @@ We can have unique keys on more than one columns.
 
 You can have only one primary key (or combination i.e. composite key) but multiple unique keys in table.
 
+
+
 =======================================
 
+********
 Example of multiple primary keys - 
 
 CREATE TABLE employee (
@@ -175,6 +188,7 @@ age INT
 
 ==========================================
 
+********
 Example of Multiple Unique Keys - 
 
 CREATE TABLE employee (
@@ -187,7 +201,9 @@ UNIQUE KEY(id, firstname)
 
 
 
-
+example - 
+emp id can be primary key 
+email id can be unique key
 
 
 

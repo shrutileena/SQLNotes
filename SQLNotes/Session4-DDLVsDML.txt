@@ -64,11 +64,15 @@ select * from employee where age > 25;
 
 4) Binary for case 
 
-By default it is case insensitive.
+select * from employee where firstname ='Rajesh';
+
+By default '=' is case insensitive.
+
+but,
 
 select * from employee where binary firstname ='Rajesh';
 
-This stmt match exact case for case sensitive.
+This stmt match exact case and is case sensitive. 'binary keyword'
 
 Empty set (0.00 sec)
 
@@ -91,6 +95,12 @@ select firstname as name,lastname as surname from employee;
 | satish | kumar   |
 | rajesh | kumar   |
 +--------+---------+
+
+
+
+
+
+
 
 Update:
 ================================
@@ -151,6 +161,11 @@ mysql> select * from employee;
 +----+-----------+------------+----------+-----+--------+----------+
 
 
+
+
+
+
+
 DELETE:
 =========================================
 
@@ -172,6 +187,10 @@ mysql> select * from employee;
 Empty set (0.00 sec)
 
 
+
+
+
+
 ALTER:
 
 ================================
@@ -179,10 +198,11 @@ ALTER:
 
 Alter is to alter the structure of the table.
 
-alter table employee add column jobtitle varchar(50);
 
 
+******
 alter table employee add column jobtitle varchar(50);
+
 
 
 Query OK, 0 rows affected (0.19 sec)
@@ -202,6 +222,8 @@ mysql> DESC employee;
 | jobtitle   | varchar(50) | YES  |     | NULL     |       |
 +------------+-------------+------+-----+----------+-------+
 
+
+******
 alter table employee drop  column jobtitle ;
 
 alter table employee drop  column jobtitle ;
@@ -221,7 +243,7 @@ mysql> DESC employee;
 | location   | varchar(20) | NO   |     | BANGLORE |       |
 +------------+-------------+------+-----+----------+-------+
 
-
+******
 alter table employee modify column firstname varchar(30);
 
 alter table employee modify column firstname varchar(30);
@@ -241,7 +263,7 @@ mysql> DESC employee;
 | location   | varchar(20) | NO   |     | BANGLORE |       |
 +------------+-------------+------+-----+----------+-------+
 
-
+******
 alter table employee drop primary key;
 
 
@@ -262,7 +284,7 @@ mysql> DESC employee;
 | location   | varchar(20) | NO   |     | BANGLORE |       |
 +------------+-------------+------+-----+----------+-------+
 
-
+*****
 alter table employee add primary key(id);
 
 
@@ -284,16 +306,30 @@ mysql> DESC employee;
 +------------+-------------+------+-----+----------+-------+
 
 
+******
+Difference in UPDATE AND ALTER :
+
+UPDATE - Data Manipulation
+
+ALTER - Structure Manipulation
+
+
+
+
+******
 DDL VS DML:
 
 ==================================
 
+******
 Data Definition Language:
 
 Deals with table structure.
 
 CREATE, ALTER, DROP are DDL commands.
 
+
+******
 Data Manipulation Language:
 
 Deals with data directly.
@@ -302,6 +338,8 @@ INSERT, UPDATE, DELETE are DML commands
 
 delete from table;
 
+
+******
 Truncate also removes all records but it is DDL command.
 
 When you use delete it will delete the data one by one records

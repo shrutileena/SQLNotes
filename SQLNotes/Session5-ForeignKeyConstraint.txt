@@ -26,6 +26,8 @@ UNIQUE KEY(student_email)
 );
 
 
+********
+seed data - when we insert data initially in one go
 
 insert into student(student_fname,student_lname,student_email,sudent_phone,years_of_exp,student_company,batch_date,source_of_joining,location) values('rohit','sharma','rohit@gmail.com','9191919191',6,'walmart','05-02-2021','linkedin','bangalore');
 
