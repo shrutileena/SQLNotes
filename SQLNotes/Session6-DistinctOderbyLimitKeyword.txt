@@ -239,7 +239,7 @@ select student_id,enrollment_date,student_fname,student_email,years_of_exp,stude
 
 
 *********
-LIMIT 0,3 means start from 0th position (first record) and 3 records from that point. So it will give first 3 records. 
+LIMIT 0,3 means start from 0th position (first record) and 3 records from that point. So it will give first 3 candidates. 
 
  select * from students order by enrollment_date desc limit 0, 3;
 +------------+---------------+---------------+---------------+-------------------+--------------+-------------------------+---------------------+------
@@ -258,6 +258,10 @@ ted_course | years_of_exp | student_company | batch_date | source_of_joining | l
 -----------+--------------+-----------------+------------+-------------------+----------+
 3 rows in set (0.00 sec)
 
+
+************
+from 4th record onwards give 2 records (4th candidate and 5th candidate) - 
+
 mysql> select * from students order by enrollment_date desc limit 3,2;
 +------------+---------------+---------------+---------------+-------------------+--------------+-------------------------+---------------------+------
 -----------+--------------+-----------------+------------+-------------------+-----------+
@@ -274,6 +278,13 @@ ted_course | years_of_exp | student_company | batch_date | source_of_joining | l
 2 rows in set (0.00 sec)
 
 
+
+
+
+
+
+
+***************
 LIKE:
 
 =============================================
