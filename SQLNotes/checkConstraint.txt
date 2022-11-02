@@ -1,0 +1,16 @@
+Check Constraint is used to specify a predicate that every tuple must satisfy in a given relation. It limits the values that a column can hold in a relation.
+
+The predicate in check constraint can hold a sub query.
+Check constraint defined on an attribute restricts the range of values for that attribute.
+If the value being added to an attribute of a tuple violates the check constraint, the check constraint evaluates to false and the corresponding update is aborted.
+Check constraint is generally specified with the CREATE TABLE command in SQL.
+
+CREATE TABLE pets(
+        ID INT NOT NULL,
+        Name VARCHAR(30) NOT NULL,
+        Breed VARCHAR(20) NOT NULL,
+        Age INT,
+        GENDER VARCHAR(9),
+        PRIMARY KEY(ID),
+        check(GENDER in ('Male', 'Female', 'Unknown'))
+        );

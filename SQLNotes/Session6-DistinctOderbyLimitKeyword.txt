@@ -56,7 +56,7 @@ ORDER BY:
 ====================================
 
 select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students o
-rder by years_of_exp;;
+rder by years_of_exp;
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
 | student_id | enrollment_date     | student_fname | student_email     | years_of_exp | student_company | batch_date | source_of_joining | location  |
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
@@ -121,6 +121,11 @@ select student_fname,years_of_exp  from students order by years_of_exp desc;
 +---------------+--------------+
 
 
+**** By Default order is in Ascending order
+
+
+**** we can mention column number also for ordering as in example given below 
+
 select student_fname,years_of_exp  from students order by 2 ;
 +---------------+--------------+
 | student_fname | years_of_exp |
@@ -160,6 +165,8 @@ select student_fname,years_of_exp  from students order by 1 desc;
 +---------------+--------------+
 
 
+***** 
+Level wise sorting 
 
 select student_fname,years_of_exp  from students order by years_of_exp,student_fname;
 +---------------+--------------+
@@ -173,13 +180,15 @@ select student_fname,years_of_exp  from students order by years_of_exp,student_f
 | carl          |           20 |
 +---------------+--------------+
 
-
+*********
 LIMIT:
 
 ==============================================
 
-select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students o
-rder by years_of_exp limit 3;
+*********
+three students with least experience
+
+select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students order by years_of_exp limit 3;
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
 | student_id | enrollment_date     | student_fname | student_email     | years_of_exp | student_company | batch_date | source_of_joining | location  |
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
@@ -188,8 +197,10 @@ rder by years_of_exp limit 3;
 |          6 | 2022-07-09 00:03:09 | saurabh       | saurabh@gmail.com |           14 | wipro           | 19-02-2021 | google            | chennai   |
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
 
-select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students o
-rder by years_of_exp desc limit 3;;
+***********
+three students with highest of experience
+
+select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students order by years_of_exp desc limit 3;;
 +------------+---------------------+---------------+-----------------+--------------+-----------------+------------+-------------------+----------+
 | student_id | enrollment_date     | student_fname | student_email   | years_of_exp | student_company | batch_date | source_of_joining | location |
 +------------+---------------------+---------------+-----------------+--------------+-----------------+------------+-------------------+----------+
@@ -199,6 +210,8 @@ rder by years_of_exp desc limit 3;;
 +------------+---------------------+---------------+-----------------+--------------+-----------------+------------+-------------------+----------+
 3 rows in set (0.00 sec)
 
+
+***********
 Want to know which sources last 5 candidates have enrolled.
 
 
@@ -212,14 +225,21 @@ select source_of_joining from students order by enrollment_date desc limit 5;
 | google            |
 | linkedin          |
 
-select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students o
-rder by enrollment_date desc limit 1;
+
+
+**********
+Last candidate to join
+
+select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students order by enrollment_date desc limit 1;
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+----------+
 | student_id | enrollment_date     | student_fname | student_email     | years_of_exp | student_company | batch_date | source_of_joining | location |
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+----------+
 |          6 | 2022-07-09 00:03:09 | saurabh       | saurabh@gmail.com |           14 | wipro           | 19-02-2021 | google            | chennai  |
 +------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+----------+
 
+
+*********
+LIMIT 0,3 means start from 0th position (first record) and 3 records from that point. So it will give first 3 records. 
 
  select * from students order by enrollment_date desc limit 0, 3;
 +------------+---------------+---------------+---------------+-------------------+--------------+-------------------------+---------------------+------

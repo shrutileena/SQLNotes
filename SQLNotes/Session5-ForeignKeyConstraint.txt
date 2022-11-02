@@ -139,11 +139,18 @@ The foreign key constraint is used to prevent actions that would destroy links b
 
 Fore Key is the field in one table that refers to primary key in other table.
 
-selected_course is foreign key in students table which refers to course_id in courses table.
+selected_course is foreign key in students table which refers to course_id (primary key) in courses table.
 
 the table with foreign key is called child table and the key with primary key is called reference table or parent table.
 
 constraint are used to limit the type of data tht can go into table
+
+constraints till now - 
+NOT NULL
+UNIQUE KEY
+PRIMARY KEY
+FOREIGN KEY
+CHECK Constraint (Not supported in MYSQL)
 
 this ensures the accuracy and reliability of the data is maintained.
 
