@@ -52,7 +52,7 @@ mysql> select count(DISTINCT source_of_joining) from students;
 |                                 5 |
 +-----------------------------------+
 
-mysql> select count(*) from students where batch_date like '19%';
+mysql> select count(*) from students where batch_date like '%-02-%';
 +----------+
 | count(*) |
 +----------+
@@ -61,11 +61,13 @@ mysql> select count(*) from students where batch_date like '19%';
 1 row in set (0.00 sec)
 
 
-GROUP BY VIMP:
+
+******
+GROUP BY:
 
 ===========================================
 
-Waht I want to use to know how many people  joined my course thorugh 
+What I want to know is that how many people have joined my course (how they got to know me through) 
 
 Linked 5
 
@@ -98,8 +100,10 @@ select location, count(*) from students group by location;
 3 rows in set (0.00 sec)
 
 
- 
-select location, count(*) from students group by source_of_joining; This is will not work.
+***********
+select location, count(*) from students group by source_of_joining; 
+
+//This is will not work.Anything in group by should also be in select; If it is not followed, then it is not functionally dependent on columns in GROUP BY clause. It is incompatible with sql_mode=only_full_group_by
 
 
  select location,source_of_joining,count(*) from students  group by location,source_of_joining;
@@ -113,7 +117,9 @@ select location, count(*) from students group by source_of_joining; This is will
 | pune      | youtube           |        2 |
 +-----------+-------------------+----------+
 
- select selected_course, count(*) from students GROUP BY selected_course;
+
+
+select selected_course, count(*) from students GROUP BY selected_course;
 +-----------------+----------+
 | selected_course | count(*) |
 +-----------------+----------+
@@ -123,6 +129,7 @@ select location, count(*) from students group by source_of_joining; This is will
 |               4 |        1 |
 +-----------------+----------+
 
+*****
 select batch_date,selected_course,count(*) from students GROUP BY batch_date,selected_course;
 +------------+-----------------+----------+
 | batch_date | selected_course | count(*) |
@@ -135,11 +142,12 @@ select batch_date,selected_course,count(*) from students GROUP BY batch_date,sel
 +------------+-----------------+----------+
 
 
+**********
 MIN & MAX:
 
 ===========================
 
- select MIN(years_of_exp) from students;
+select MIN(years_of_exp) from students;
 +-------------------+
 | MIN(years_of_exp) |
 +-------------------+
@@ -155,8 +163,16 @@ mysql> select MAX(years_of_exp) from students;
 +-------------------+
 1 row in set (0.00 sec)
 
+********
+-- this works
+select MIN(years_of_exp), student_fname from students;
 
-Each Source Of joining I want to get max :
+this also works - 
+select student_fname from students order by years_of_exp limit 1;
+********
+
+
+For each source_of_joining I want to get max years_of_exp :
 
 select source_of_joining,max(years_of_exp) from students group by source_of_joining;
 +-------------------+-------------------+
@@ -169,6 +185,9 @@ select source_of_joining,max(years_of_exp) from students group by source_of_join
 | youtube           |                20 |
 +-------------------+-------------------+
 
+
+
+***********
 SUM:
 
 =====================================
@@ -184,6 +203,9 @@ select source_of_joining, sum(years_of_exp) from students group by source_of_joi
 | youtube           |                38 |
 +-------------------+-------------------+
 
+
+
+********
 AVG:
 
 ===============================

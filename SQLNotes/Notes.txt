@@ -1,3 +1,4 @@
 **** This Query won't work ****
 SELECT DISTINCT source_of_joining from students order by enrollment_date desc LIMIT 5;
 
+Reason explained in session 7 

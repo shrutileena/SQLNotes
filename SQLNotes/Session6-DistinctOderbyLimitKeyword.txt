@@ -14,6 +14,8 @@ Distinct:
 
 ===============================
 
+*** In DISTINCT - NULL is not counted ***
+
 
 mysql> select distinct(location) from students;
 +-----------+
@@ -289,6 +291,7 @@ LIKE:
 
 =============================================
 
+Fuzzy match
 
 select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students w
 here student_fname like '%ra%';
@@ -320,6 +323,8 @@ here student_fname like '%it';
 1 row in set (0.00 sec)
 
 
+******* student first name has 5 letters/characters - 
+
 select student_id,enrollment_date,student_fname,student_email,years_of_exp,student_company,batch_date,source_of_joining,location from students w
 here student_fname like '_____';
 +------------+---------------------+---------------+-----------------+--------------+-----------------+------------+-------------------+-----------+
@@ -339,9 +344,10 @@ here student_fname like '____';
 |          5 | 2022-07-09 00:03:09 | carl          | carl@gmail.com |           20 | wipro           | 19-02-2021 | youtube           | pune     |
 +------------+---------------------+---------------+----------------+--------------+-----------------+------------+-------------------+----------+
 
-% and _ are wild card characters.
+******* % and _ are wild card characters.
 
-
+% : zero or more characters
+_ : Exactly one character
 
 
 

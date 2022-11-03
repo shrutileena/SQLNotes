@@ -2,14 +2,14 @@ Session 7:
 
 =============================
 
-select distinct source_of_joing from students order by enrollment_date desc;
+select distinct source_of_joining from students order by enrollment_date desc;
 
-Distinct and Order By in the same Query.
+Distinct and Order By in the same Query.It doesn't work
 
 
 case 1:
 
-select source_of_joing from students
+select source_of_joining from students
 
 Order of execution:
 =============================
@@ -26,6 +26,7 @@ Order of execution:
 =============================
 
 1) From (Loading the Table)
+select * from students;
 
 2) Select (Projecting source_of_joining and source_of_joining)
 
@@ -37,6 +38,7 @@ Order of execution:
 =============================
 
 1) From (Loading the Table)
+select * from students;
 
 2) Select (Projecting source_of_joining and source_of_joining)
 
@@ -52,8 +54,12 @@ Order of execution:
 =============================
 
 1) From (Loading the Table)
+select * from students;
 
-2) Select (Projecting source_of_joining , enrollment_date)
+2) Select (Projecting source_of_joining , enrollment_date) // system needs enrollment_date for ordering, so it will still project this column, we can't discard it as it is needed by the system
+
+
+select source_of_joining,enrollment_date from students;
 
 3) Order By (based on enrollment_date it will order by)
 
@@ -67,12 +73,14 @@ Order of execution:
 =============================
 
 1) From (Loading the Table)
+select * from students;
 
-2) Select (Projecting source_of_joining , enrollment_date)
+2) Select (Projecting source_of_joining , enrollment_date)  // system needs enrollment_date for ordering, so it will still project this column, we can't discard it as it is needed by the system
 
 select source_of_joining,enrollment_date from students;
 
-3) distinct 
+3) distinct //distinct will happen on both of columns because system has to take both for ordering by; So instead of "select distinct source_of_joining from students", this query is fired "select distinct source_of_joining,enrollment_date from students";
+So, distinct will happen on combination of both the columns; logically it is wrong
 
 select distinct source_of_joining,enrollment_date from students;
 
