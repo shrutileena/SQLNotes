@@ -9,7 +9,9 @@ course_fee int NOT NULL,
 PRIMARY KEY(course_id)
 );
 
-insert into courses_new(course_name,course_duration_months,course_fee) values('bigdata', 6.5, 50000),('webdevelopment', 3.5, 20000),('datascience', 6, 40000),;
+// (3,1) here 3 means total it can have 3 digits. 1 here means that after decimal point only 1 digit can be there.
+
+insert into courses_new(course_name,course_duration_months,course_fee) values('bigdata', 6.5, 50000),('webdevelopment', 3.5, 20000),('datascience', 6, 40000);
 
 insert into courses_new(course_name,course_duration_months,course_fee) values('devops', 10.5, 30000);
 
@@ -50,6 +52,8 @@ mysql> select * from courses_new;
 +-----------+----------------+------------------------+------------+---------------------+
 3 rows in set (0.00 sec)
 
+
+******
 create table courses_new(
 course_id int AUTO_INCREMENT,
 course_name varchar(30) NOT NULL,
@@ -58,6 +62,11 @@ course_fee int NOT NULL,
 changed_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP(),
 PRIMARY KEY(course_id)
 );
+******
+// Audit column - changed_at
+// ON UPDATE 
+// With DEFAULT we can use ON UPDATE
+
 
 update courses_new set course_fee = 40000 where course_id = 2;
 Query OK, 1 row affected (0.00 sec)
@@ -76,4 +85,4 @@ mysql> select * from courses_new;
 
 DECIMAL(5,3)
 
-TIMESTAMP CURRENT_TIMESTAMP
+TIMESTAMP CURRENT_TIMESTAMP() / NOW()
