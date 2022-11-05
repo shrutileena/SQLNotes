@@ -25,14 +25,23 @@ row_number() as rownum OVER (ORDER BY salary DESC) FROM employee;
 
 ** ROW_NUMBER() won't work without ORDER BY 
 
+
+
+
 -- Find the record having 5th highest salary
 
 SELECT * FROM (SELECT firstname, lastname, salary, 
 row_number() OVER (ORDER BY salary DESC) AS rownum FROM employee) temptable WHERE rownum = 5;
 
+
+
+
 -- Assign row number for partitions based on each location
 
 SELECT firstname, lastname, location, salary, row_number() OVER (PARTITION BY location ORDER BY salary DESC) FROM employee; 
+
+
+
 
 -- Find the candidate having highest salary from each location
 
@@ -40,6 +49,9 @@ SELECT * FROM (SELECT firstname, lastname, location, salary,
 row_number() OVER (PARTITION BY location ORDER BY salary DESC) AS rownum 
 FROM employee) temptable
 WHERE rownum = 1;
+
+
+
 
 ===============================================================================
 ** When we use ROW_NUMBER, we must use ORDER BY clause otherwise it won't work

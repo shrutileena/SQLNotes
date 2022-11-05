@@ -1,4 +1,4 @@
------------------
+ -----------------
 RANK & DENSE RANK
 -----------------
 
@@ -33,20 +33,36 @@ row_number() OVER (ORDER BY salary DESC) FROM employee;
 SELECT firstname, lastname, salary, 
 RANK() OVER (ORDER BY salary DESC) FROM employee;
 
+Sunil	Shetty	50000	1
+Mark	John	50000	1
+Akshay	Kumar	40000	3
+Virat	Kohli	30000	4
+Rohit	Sharma	20000	5
+Sachin	Sharma	10000	6
+
 -- With DENSE_RANK()
 SELECT firstname, lastname, salary, 
 DENSE_RANK() OVER (ORDER BY salary DESC) FROM employee;
 
+Sunil	Shetty	50000	1
+Mark	John	50000	1
+Akshay	Kumar	40000	2
+Virat	Kohli	30000	3
+Rohit	Sharma	20000	4
+Sachin	Sharma	10000	5
+
 ** RANK() will skip assigning row numbers to records when there are duplicate data in the records.
 ** RANK() will assign the same rank for duplicate data in the records.
 
-** DENSE_RANK() will assign the row numbers in sequence even when there are duplicate data in the records.
+** DENSE_RANK() will assign the row numbers in sequence even when there are duplicate data in the records. Numbers are densely assigned.
 
 ** When there are no duplicate data in the records, ROW_NUMBER(), RANK() and DENSE_RANK() all of them will give the same result.
 
 ====================================================================
 ** When there are no duplicates in the records then use ROW_NUMBER
 
+
+*****
 When should we use the DENSE_RANK() ?
 
 -- Consider the usecase when we have to find the top 3 positions in some competition, then as per DENSE_RANK(), we will have the
@@ -63,3 +79,7 @@ Candidate 6 score = 96 ==> 4
 
 SELECT * FROM (SELECT firstname, lastname, salary, 
 DENSE_RANK() OVER (ORDER BY salary DESC) AS rownum from employee) temptable WHERE rownum = 4;
+
+
+-- we can use partition as well.
+-- partition is optional, order by is mandatory
