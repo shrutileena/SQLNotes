@@ -1,6 +1,10 @@
 Session 9:
 ===============================================
 
+DECIMAL(5,3)
+
+TIMESTAMP CURRENT_TIMESTAMP() / NOW()
+
 create table courses_new(
 course_id int AUTO_INCREMENT,
 course_name varchar(30) NOT NULL,

@@ -1,6 +1,14 @@
 Session 10:
 ========================
 
+!=
+NOT LIKE
+BETWEEN
+NOT BETWEEN
+IN
+NOT IN
+CASE STATEMENT
+
 select * from students where location = 'bangalore';
 
 To Get people who are not from bangalore:

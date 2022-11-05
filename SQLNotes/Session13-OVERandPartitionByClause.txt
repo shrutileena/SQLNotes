@@ -16,7 +16,7 @@ INSERT INTO employee VALUES
 ('Sachin', 'Sharma', 28, 10000, 'Bangalore'),
 ('Rohit', 'Sharma', 30, 20000, 'Hyderabad'),
 ('Virat', 'Kohli', 29, 30000, 'Chennai'),
-('Akshay', 'Kumar', 32, 40000, 'Banagalore'),
+('Akshay', 'Kumar', 32, 40000, 'Bangalore'),
 ('Sunil', 'Shetty', 34, 50000, 'Hyderabad'),
 ('Mark', 'John', 34, 50000, 'Bangalore');
 
@@ -26,6 +26,12 @@ INSERT INTO employee VALUES
 
 SELECT location, COUNT(location) AS total, AVG(salary) AS average from employee GROUP BY location;
 
+OR 
+
+select location, count(*), avg(salary) from employee group by location;
+
+
+*****imp*****
 -- Fetch the firstname, latname and how many people are from each location and average salary at each location
 
 SELECT firstname, lastname, location, COUNT(location) AS total, AVG(salary) AS average from employee GROUP BY location;
@@ -37,7 +43,10 @@ ERROR 1055 (42000) at line 19: Expression #1 of SELECT list is not in GROUP BY c
 SELECT firstname, lastname, employee.location, total_count, avg_salary FROM employee JOIN 
 (SELECT location, COUNT(location) AS total_count, AVG(salary) AS avg_salary from employee GROUP BY location) temptable ON 
 employee.location = temptable.location;
+*****imp*****
 
+
+*****imp*****
 -- Is there any other way to perform above query?
 
 ==> We can use OVER PARTITION BY to achieve this easily
@@ -48,3 +57,4 @@ SELECT firstname, lastname, location,
 COUNT(location) OVER (PARTITION BY location) AS total, 
 AVG(salary) OVER (PARTITION BY location) AS average 
 FROM employee;
+*****imp*****

@@ -34,8 +34,10 @@ ENCES `courses` (`course_id`))
 
 -- Now, we will create a new students table and new couses table with same data but FOREIGN key constraint won't be there
 
+********
 CREATE TABLE students_latest AS SELECT * FROM students;
 CREATE TABLE courses_latest AS SELECT * FROM courses;
+********
 
 -- Now, we can delete the records from courses table
 
@@ -58,6 +60,9 @@ JOIN courses_latest c ON s.selected_course = c.course_id;
 SELECT student_fname, student_lname, selected_course, course_name FROM students_latest s 
 LEFT JOIN courses_latest c ON s.selected_course = c.course_id;
 
+
+
+
 ----------------
 RIGHT OUTER JOIN
 ----------------
@@ -74,6 +79,8 @@ RIGHT OUTER JOIN
 -- Find the course in which students are enrolled
 SELECT student_fname, student_lname, selected_course, course_name FROM students_latest s 
 RIGHT JOIN courses_latest c ON s.selected_course = c.course_id;
+
+
 
 ---------------
 FULL OUTER JOIN
@@ -92,6 +99,10 @@ LEFT JOIN courses_latest c ON s.selected_course = c.course_id
 UNION
 SELECT student_fname, student_lname, selected_course, course_name FROM students_latest s 
 RIGHT JOIN courses_latest c ON s.selected_course = c.course_id;
+
+
+
+
 
 ----------
 CROSS JOIN
